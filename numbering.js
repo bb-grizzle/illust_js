@@ -5,6 +5,9 @@ var selections;
 
 if(myDoc.selection.length>0){
     selections = myDoc.selection;
+    //인풋 받기
+    var input = prompt ("추가할 텍스트를 입력하세요. \n없다면 확인을 누르세요.", "");
+    $.writeln("input.length: " + input.length);
     
      //대지 
     var artboard = myDoc.artboards;
@@ -16,23 +19,28 @@ if(myDoc.selection.length>0){
     layer.name = "pageNumber";
 
     //selections 위치, 사이즈 잡기
-    /*
-      $.writeln("selections : " + selections);
-      $.writeln("positionx : " + positionx + ", positiony"  + positiony);
-      $.writeln("selections.length : " + selections.length);
-      */
     var fontName = selections[0].textRange.characterAttributes.textFont;
     var fontSize = selections[0].textRange.characterAttributes.size;
-        /*
-         $.writeln("fontName : " + fontName);
-        $.writeln("fontSize : " + fontSize);
-*/
+        
+    //selections info
+    $.writeln("[selections info]");
+    $.writeln("selections : " + selections);
+    $.writeln("fontName : " + fontName);
+    $.writeln("fontSize : " + fontSize);
 
+    
+     var selWidth = selections[0].width;
+         
     for(var i=0; i<artboards_length; i++){
             
         var pageNumb = i+1;
         var Numbertext = layer.textFrames.add(); 
-        Numbertext.contents = pageNumb;
+        if(input.length>0){
+            Numbertext.contents = input+"  " + pageNumb;
+        }else{
+            Numbertext.contents = pageNumb;
+        }
+        
         
         //위치 잡기
         var activeArtBoard = artboard[i];
@@ -46,6 +54,7 @@ if(myDoc.selection.length>0){
         }
         
         //X position
+        
         var gapX = selections[0].position[0] - artboard[0].artboardRect[0];
         var positionX = artBound[0]+gapX;
         var ableft = positionX; 
@@ -54,14 +63,17 @@ if(myDoc.selection.length>0){
         var gapY = selections[0].position[1] - artboard[0].artboardRect[1];
         var abbottom = artBound[1] + gapY;
        
-        Numbertext.textRange.paragraphAttributes.justification = Justification.LEFT; 
+        Numbertext.textRange.paragraphAttributes.justification = Justification.RIGHT; 
         Numbertext.textRange.characterAttributes.size = fontSize;
         Numbertext.textRange.characterAttributes.textFont = fontName;
         
-        Numbertext.left = ableft;  
+         var textWidth = Numbertext.width;
+        $.writeln("textWidth : " + textWidth);
+        $.writeln("selWidth : " + selWidth);
+        
+        Numbertext.left = ableft - textWidth + selWidth;  
         Numbertext.top = abbottom;  
         $.writeln("gapY : " + gapY);
-
     }
     selections[0].remove();
 }else{
