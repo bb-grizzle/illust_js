@@ -23,10 +23,12 @@ if(myDoc.selection.length>0){
     var fontSize = selections[0].textRange.characterAttributes.size;
         
     //selections info
+    /*
     $.writeln("[selections info]");
     $.writeln("selections : " + selections);
     $.writeln("fontName : " + fontName);
     $.writeln("fontSize : " + fontSize);
+    */
 
     
      var selWidth = selections[0].width;
@@ -46,13 +48,6 @@ if(myDoc.selection.length>0){
         var activeArtBoard = artboard[i];
         var artBound = activeArtBoard.artboardRect;
         
-         if(i==0){
-            $.writeln("artBound[0] : " + artBound[0]);
-            $.writeln("artBound[1] : " + artBound[1]);
-            $.writeln("artBound[2] : " + artBound[2]);
-            $.writeln("artBound[3] : " + artBound[3]);
-        }
-        
         //X position
         
         var gapX = selections[0].position[0] - artboard[0].artboardRect[0];
@@ -68,12 +63,9 @@ if(myDoc.selection.length>0){
         Numbertext.textRange.characterAttributes.textFont = fontName;
         
          var textWidth = Numbertext.width;
-        $.writeln("textWidth : " + textWidth);
-        $.writeln("selWidth : " + selWidth);
-        
         Numbertext.left = ableft - textWidth + selWidth;  
         Numbertext.top = abbottom;  
-        $.writeln("gapY : " + gapY);
+        
     }
     selections[0].remove();
 }else{
