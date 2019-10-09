@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setup_info>
+	<checks>
+		<os_version>
+			<major>5</major>
+			<minor>1</minor>
+			<service_pack>2</service_pack>
+		</os_version>
+	</checks>
+	<package_core>
+		<pimx_location>\packages\core\PDApp.pimx</pimx_location>
+		<target_location>\core</target_location>
+		<executable>PDApp</executable>
+	</package_core>
+	<package_info>
+		<pimx_location>\packages\D6\D6.pimx</pimx_location>
+	</package_info>
+	<package_info>
+		<pimx_location>\packages\DECore\DECore.pimx</pimx_location>
+	</package_info>
+	<package_info>
+		<pimx_location>\packages\DWA\DWA.pimx</pimx_location>
+	</package_info>
+	<package_info>
+		<pimx_location>\packages\P6\P6.pimx</pimx_location>
+	</package_info>
+	<package_info>
+		<pimx_location>\packages\LWA\LWA.pimx</pimx_location>
+	</package_info>
+	<package_info>
+		<pimx_location>\packages\UWA\UWA.pimx</pimx_location>
+	</package_info>
+	<package_info>
+		<pimx_location>\packages\CCM\CCM.pimx</pimx_location>
+	</package_info>
+	<package_info>
+		<pimx_location>\packages\P7\P7.pimx</pimx_location>
+	</package_info>
+</setup_info>

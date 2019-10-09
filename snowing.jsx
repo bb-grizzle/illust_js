@@ -17,7 +17,7 @@ layer.name = "snow";
 //draw snow
 var cir = myDoc.pathItems;
 var size = 4;
-var count = 30;
+var count = 10 0;
 var snowColor = new GrayColor();
 snowColor.gray = 0;
 
